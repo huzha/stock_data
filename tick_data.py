@@ -40,7 +40,7 @@ def run():
         hour = datetime.datetime.today().hour
         minute = datetime.datetime.today().minute
         second = datetime.datetime.today().second
-        if (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (hour > 11 and hour < 13) or (
+        if (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (11 < hour < 13) or (
                 hour == 11 and minute > 30):
             print('未开盘或已收市...')
             break
