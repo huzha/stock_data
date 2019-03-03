@@ -10,6 +10,7 @@ import tushare as ts
 import numpy as np
 from sqlalchemy import create_engine
 import pymysql
+
 pymysql.install_as_MySQLdb()
 
 symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
@@ -46,7 +47,8 @@ def run():
         if weekday == 5 or weekday == 6:
             print("周六周日休市")
             break
-        elif (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (11 < hour < 13) or (hour == 11 and minute > 30):
+        elif (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (11 < hour < 13) or (
+                hour == 11 and minute > 30):
             print('未开盘或已收市...')
             break
         else:
