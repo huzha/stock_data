@@ -9,6 +9,8 @@ import datetime
 import tushare as ts
 import numpy as np
 from sqlalchemy import create_engine
+import pymysql
+pymysql.install_as_MySQLdb()
 
 symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
 mysql_engine = create_engine('mysql://root:abc123@localhost:3306/demos?charset=utf8&use_unicode=1')
@@ -37,11 +39,14 @@ def run():
     today = str(today).replace('-', '')
     last = None
     while True:
+        weekday = datetime.datetime.today().weekday()
         hour = datetime.datetime.today().hour
         minute = datetime.datetime.today().minute
         second = datetime.datetime.today().second
-        if (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (11 < hour < 13) or (
-                hour == 11 and minute > 30):
+        if weekday == 5 or weekday == 6:
+            print("周六周日休市")
+            break
+        elif (hour > 15) or (hour == 9 and minute < 30) or (hour < 9) or (11 < hour < 13) or (hour == 11 and minute > 30):
             print('未开盘或已收市...')
             break
         else:
@@ -71,7 +76,7 @@ def tick_test():
     df = ts.get_tick_data('300199', date='2019-01-22', src='tt')
     df['code'] = '300199'
     df['date'] = '20190122'
-    df.to_sql('STOCK_TICK', mysql_engine, index=False, if_exists='append')
+    # df.to_sql('STOCK_TICK', mysql_engine, index=False, if_exists='append')
     print(df)
 
 
