@@ -14,7 +14,7 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 symbols = ['600000', '600008', '600848', '600023', '300199', '300001', '002252']
-mysql_engine = create_engine('mysql://root:abc123@localhost:3306/demos?charset=utf8&use_unicode=1')
+mysql_engine = create_engine('mysql://root:root@localhost:3306/demos?charset=utf8&use_unicode=1')
 
 """
 获取实时行情
