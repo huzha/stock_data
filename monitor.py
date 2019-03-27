@@ -4,8 +4,7 @@ import requests
 
 a_stock = ['601111', '000635']
 
-h_stock = '01810'
-h_url = 'http://hq.sinajs.cn/list=hk'
+h_stock = ['01810']
 
 
 def get_a_stock():
@@ -15,9 +14,16 @@ def get_a_stock():
 
 
 def get_h_stock():
-    res = requests.get(h_url + h_stock)
-    temp = res.text.split('=')[1][:-2][1:-1].split(',')
-    print(h_stock + " " + temp[1] + " " + temp[6] + " " + temp[4] + " " + temp[18])
+    h_url = 'http://hq.sinajs.cn/list='
+    h_stocks = ''
+    for h in h_stock:
+        h_stocks += 'hk' + h + ','
+    response = requests.get(h_url + h_stocks)
+    res_list = response.text.split('\n')
+    for res in res_list:
+        if str(res).find('=') > 0:
+            temp = res.split('=')[1][:-2][1:-1].split(',')
+            print(h_stock[res_list.index(res)] + " " + temp[1] + " " + temp[6] + " " + temp[4] + " " + temp[18])
 
 
 if __name__ == '__main__':
@@ -25,4 +31,4 @@ if __name__ == '__main__':
         time.sleep(2)
         get_a_stock()
         get_h_stock()
-        print('---------------------------------------')
+        print('--------------------------------------------')
