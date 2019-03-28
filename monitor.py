@@ -2,7 +2,7 @@ import tushare as ts
 import time
 import requests
 
-a_stock = ['000635']
+a_stock = ['600901']
 
 h_stock = ['01810']
 
@@ -26,7 +26,7 @@ if __name__ == '__main__':
     while True:
         time.sleep(2)
         df = get_a_stock()
-        res_list = get_h_stock()
+        # res_list = get_h_stock()
         for index, row in df.iterrows():
             print(row['code'], row['name'], row['price'], row['high'], row['time'])
         # for res in res_list:
