@@ -29,9 +29,9 @@ if __name__ == '__main__':
         res_list = get_h_stock()
         for index, row in df.iterrows():
             print(row['code'], row['name'], row['price'], row['high'], row['time'])
-        for res in res_list:
-            if str(res).find('=') > 0:
-                temp = res.split('=')[1][:-2][1:].split(',')
-                print(h_stock[res_list.index(res)] + " " + temp[1] + " " + temp[6] + " " + temp[4] + " " + temp[18])
+        # for res in res_list:
+        #     if str(res).find('=') > 0:
+        #         temp = res.split('=')[1][:-2][1:].split(',')
+        #         print(h_stock[res_list.index(res)] + " " + temp[1] + " " + temp[6] + " " + temp[4] + " " + temp[18])
         print('--------------------------------------------')
 
