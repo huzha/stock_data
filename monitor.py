@@ -2,7 +2,7 @@ import tushare as ts
 import time
 import requests
 
-a_stock = ['600901']
+a_stock = ['600901', '000635']
 
 h_stock = ['01810']
 
@@ -12,6 +12,7 @@ def get_a_stock():
     return df
 
 
+# 港股有延时
 def get_h_stock():
     h_url = 'http://hq.sinajs.cn/list='
     h_stocks = ''
@@ -34,4 +35,3 @@ if __name__ == '__main__':
         #         temp = res.split('=')[1][:-2][1:].split(',')
         #         print(h_stock[res_list.index(res)] + " " + temp[1] + " " + temp[6] + " " + temp[4] + " " + temp[18])
         print('--------------------------------------------')
-
