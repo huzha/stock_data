@@ -1,5 +1,5 @@
 import tushare as ts
-import redis
+# import redis
 import sqlite3
 from sqlalchemy import create_engine
 
@@ -15,7 +15,9 @@ df_zz500 = ts.get_zz500s()
 
 engine = create_engine('sqlite:///stock.db', echo=True)
 
-df_zz500.to_sql('zz_500', engine, if_exists='append')
+df_zz500.to_sql('zz_500', engine, if_exists='replace')
+
+print(df_zz500)
 
 
 

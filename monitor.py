@@ -2,7 +2,7 @@ import tushare as ts
 import time
 import requests
 
-a_stock = ['600901', '000635']
+a_stock = ['002602', '000635', '600280', '600682']
 
 h_stock = ['01810']
 

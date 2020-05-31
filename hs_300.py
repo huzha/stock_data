@@ -1,5 +1,4 @@
 import tushare as ts
-import redis
 import sqlite3
 from sqlalchemy import create_engine
 
@@ -13,9 +12,13 @@ df_hs300 = ts.get_hs300s()
 
 engine = create_engine('sqlite:///stock.db', echo=True)
 
-df_hs300.to_sql('hs_300', engine, if_exists='append')
+df_hs300.to_sql('hs_300', engine, if_exists='replace')
+
+print(df_hs300)
 
 # df_zz500 = ts.get_zz500s()
+
+# df_zz500.to_sql('zz_500', engine, if_exists='replace')
 
 # pool = redis.ConnectionPool(host='127.0.0.1', port='6379')
 
